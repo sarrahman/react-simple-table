@@ -1,24 +1,269 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Button, Text } from './lib/components/atoms';
+import { TableSearch } from './lib/template';
+
+const column = [
+  {
+    title: "No.",
+    type: "Custom",
+    cell: (row: any, i: number) => (
+      <Text
+        fontWeight="500"
+        fontSize="16px"
+        color="#1F4173"
+        textAlign="center"
+        child={`${i + 1}`}
+      />
+    ),
+  },
+  {
+    title: "Kode Barang",
+    dataIndex: "kode",
+  },
+  {
+    title: "Nama",
+    dataIndex: "nama",
+  },
+  {
+    title: "Kategori",
+    dataIndex: "kategori",
+  },
+  {
+    title: "Jenis",
+    dataIndex: "jenis",
+  },
+  {
+    title: "Stok",
+    dataIndex: "stok",
+  },
+  {
+    title: "Harga",
+    dataIndex: "harga",
+  },
+  {
+    title: "Aksi",
+    type: "Custom",
+    cell: (row: any) => (
+      <div
+        style={{
+          display: "flex",
+          width: "100%",
+        }}
+      >
+        <Button backgroundColor="#3566E3" child="Lihat" />
+        <hr style={{ marginLeft: 7, marginRight: 7 }} />
+        <Button backgroundColor="#39AE44" child="Barcode" />
+        <hr style={{ marginLeft: 7, marginRight: 7 }} />
+        <Button backgroundColor="#39AE44" child="Harga" />
+        <hr style={{ marginLeft: 7, marginRight: 7 }} />
+        <Button backgroundColor="#F67E3B" child="Edit" />
+        <hr style={{ marginLeft: 7, marginRight: 7 }} />
+        <Button backgroundColor="#F63B3B" child="Delete" />
+      </div>
+    ),
+  },
+];
+
+const data = [
+  {
+    kode: "BRG001",
+    nama: "Kopi",
+    kategori: "Biji",
+    jenis: "Kopi",
+    stok: "10",
+    harga: 10000,
+  },
+  {
+    kode: "BRG002",
+    nama: "Kopi",
+    kategori: "Biji",
+    jenis: "Kopi",
+    stok: "10",
+    harga: 10000,
+  },
+  {
+    kode: "BRG003",
+    nama: "Susu",
+    kategori: "Susu",
+    jenis: "Susu",
+    stok: "10",
+    harga: 10000,
+  },
+  {
+    kode: "BRG001",
+    nama: "Kopi",
+    kategori: "Biji",
+    jenis: "Kopi",
+    stok: "10",
+    harga: 10000,
+  },
+  {
+    kode: "BRG002",
+    nama: "Kopi",
+    kategori: "Biji",
+    jenis: "Kopi",
+    stok: "10",
+    harga: 10000,
+  },
+  {
+    kode: "BRG003",
+    nama: "Susu",
+    kategori: "Susu",
+    jenis: "Susu",
+    stok: "10",
+    harga: 10000,
+  },
+  {
+    kode: "BRG001",
+    nama: "Kopi",
+    kategori: "Biji",
+    jenis: "Kopi",
+    stok: "10",
+    harga: 10000,
+  },
+  {
+    kode: "BRG002",
+    nama: "Kopi",
+    kategori: "Biji",
+    jenis: "Kopi",
+    stok: "10",
+    harga: 10000,
+  },
+  {
+    kode: "BRG003",
+    nama: "Susu",
+    kategori: "Susu",
+    jenis: "Susu",
+    stok: "10",
+    harga: 10000,
+  },
+  {
+    kode: "BRG001",
+    nama: "Kopi",
+    kategori: "Biji",
+    jenis: "Kopi",
+    stok: "10",
+    harga: 10000,
+  },
+  {
+    kode: "BRG002",
+    nama: "Kopi",
+    kategori: "Biji",
+    jenis: "Kopi",
+    stok: "10",
+    harga: 10000,
+  },
+  {
+    kode: "BRG003",
+    nama: "Susu",
+    kategori: "Susu",
+    jenis: "Susu",
+    stok: "10",
+    harga: 10000,
+  },
+  {
+    kode: "BRG001",
+    nama: "Kopi",
+    kategori: "Biji",
+    jenis: "Kopi",
+    stok: "10",
+    harga: 10000,
+  },
+  {
+    kode: "BRG002",
+    nama: "Kopi",
+    kategori: "Biji",
+    jenis: "Kopi",
+    stok: "10",
+    harga: 10000,
+  },
+  {
+    kode: "BRG003",
+    nama: "Susu",
+    kategori: "Susu",
+    jenis: "Susu",
+    stok: "10",
+    harga: 10000,
+  },
+  {
+    kode: "BRG001",
+    nama: "Kopi",
+    kategori: "Biji",
+    jenis: "Kopi",
+    stok: "10",
+    harga: 10000,
+  },
+  {
+    kode: "BRG002",
+    nama: "Kopi",
+    kategori: "Biji",
+    jenis: "Kopi",
+    stok: "10",
+    harga: 10000,
+  },
+  {
+    kode: "BRG003",
+    nama: "Susu",
+    kategori: "Susu",
+    jenis: "Susu",
+    stok: "10",
+    harga: 10000,
+  },
+  {
+    kode: "BRG001",
+    nama: "Kopi",
+    kategori: "Biji",
+    jenis: "Kopi",
+    stok: "10",
+    harga: 10000,
+  },
+  {
+    kode: "BRG002",
+    nama: "Kopi",
+    kategori: "Biji",
+    jenis: "Kopi",
+    stok: "10",
+    harga: 10000,
+  },
+  {
+    kode: "BRG003",
+    nama: "Susu",
+    kategori: "Susu",
+    jenis: "Susu",
+    stok: "10",
+    harga: 10000,
+  },
+  {
+    kode: "BRG001",
+    nama: "Kopi",
+    kategori: "Biji",
+    jenis: "Kopi",
+    stok: "10",
+    harga: 10000,
+  },
+  {
+    kode: "BRG002",
+    nama: "Kopi",
+    kategori: "Biji",
+    jenis: "Kopi",
+    stok: "10",
+    harga: 10000,
+  },
+  {
+    kode: "BRG003",
+    nama: "Susu",
+    kategori: "Susu",
+    jenis: "Susu",
+    stok: "10",
+    harga: 10000,
+  },
+];
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <TableSearch data={data} column={column} />
     </div>
   );
 }
