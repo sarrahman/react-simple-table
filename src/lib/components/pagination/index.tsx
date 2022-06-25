@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import styles from "./Pagination.module.css";
 
 const Pagination = (props: {

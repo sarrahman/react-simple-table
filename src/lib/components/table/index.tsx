@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useTable } from "../../hooks";
+import { Text } from "../atoms";
 import Pagination from "../pagination";
 import styles from "./AllTable.module.css";
 
@@ -39,59 +40,86 @@ export default function AllTable(props: {
   }, [props.data]);
 
   return (
-    <table className={styles.table}>
-      <thead>
-        <tr>
-          {column.map((item, index) => (
-            <th
-              style={{
-                cursor: "pointer",
-              }}
-              onClick={() => handleSort(item.dataIndex)}
-              key={index}
-              className={styles.th}
-            >
-              <p
+    <>
+      <table className={styles.table}>
+        <thead>
+          <tr>
+            {column.map((item, index) => (
+              <th
                 style={{
-                  fontWeight: "500",
-                  fontSize: "16px",
-                  color: "#A1A1AA",
-                  lineHeight: "16px",
-                  textDecoration: "underline",
-                  textAlign: "center",
+                  cursor: "pointer",
                 }}
+                onClick={() => handleSort(item.dataIndex)}
+                key={index}
+                className={styles.th}
               >
-                {item.title}
-              </p>
-            </th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {slice.map((item, index) => (
-          <tr key={index}>
-            {column.map((itemColumn, indexColumn) => (
-              <td key={indexColumn} className={styles.td}>
-                {itemColumn.type !== "Custom" ? (
-                  <p
-                    style={{
-                      fontWeight: "500",
-                      fontSize: "16px",
-                      color: "#1F4173",
-                      textAlign: "center",
-                    }}
-                  >
-                    {item[itemColumn.dataIndex]}
-                  </p>
-                ) : (
-                  itemColumn.cell(item, index)
-                )}
-              </td>
+                <p
+                  style={{
+                    fontWeight: "500",
+                    fontSize: "16px",
+                    color: "#A1A1AA",
+                    lineHeight: "16px",
+                    textDecoration: "underline",
+                    textAlign: "center",
+                  }}
+                >
+                  {item.title}
+                </p>
+              </th>
             ))}
           </tr>
-        ))}
-      </tbody>
-      <Pagination range={range} slice={slice} setPage={setPage} page={page} />
-    </table>
+        </thead>
+        <tbody>
+          {slice.map((item, index) => (
+            <tr key={index}>
+              {column.map((itemColumn, indexColumn) => (
+                <td key={indexColumn} className={styles.td}>
+                  {itemColumn.type !== "Custom" ? (
+                    <p
+                      style={{
+                        fontWeight: "500",
+                        fontSize: "16px",
+                        color: "#1F4173",
+                        textAlign: "center",
+                      }}
+                    >
+                      {item[itemColumn.dataIndex]}
+                    </p>
+                  ) : (
+                    itemColumn.cell(item, index)
+                  )}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          border: "1px solid #E6E6E6",
+          padding: "0px 20px",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Text child={`${100} - ${200} dari ${5000} data`} />
+        </div>
+        <div>
+          <Pagination
+            range={range}
+            slice={slice}
+            setPage={setPage}
+            page={page}
+          />
+        </div>
+      </div>
+    </>
   );
 }

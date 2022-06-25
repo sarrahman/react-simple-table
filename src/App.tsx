@@ -1,22 +1,8 @@
-import React from 'react';
-import './App.css';
-import { Button, Text } from './lib/components/atoms';
-import { TableSearch } from './lib/template';
+import "./App.css";
+import { Button, Text } from "./lib/components/atoms";
+import { TableSearch } from "./lib/template";
 
 const column = [
-  {
-    title: "No.",
-    type: "Custom",
-    cell: (row: any, i: number) => (
-      <Text
-        fontWeight="500"
-        fontSize="16px"
-        color="#1F4173"
-        textAlign="center"
-        child={`${i + 1}`}
-      />
-    ),
-  },
   {
     title: "Kode Barang",
     dataIndex: "kode",
@@ -263,7 +249,11 @@ const data = [
 function App() {
   return (
     <div className="App">
-      <TableSearch data={data} column={column} />
+      <TableSearch
+        rowsPerPage={[10, 25, 50, 100]}
+        data={data}
+        column={column}
+      />
     </div>
   );
 }

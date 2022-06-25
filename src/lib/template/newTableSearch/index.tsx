@@ -3,14 +3,13 @@ import { useState } from "react";
 import { Loader, Text, TextField } from "../../components/atoms";
 import AllTable from "../../components/table";
 
-const rowPerPage = [10, 25, 50, 100];
-
 export default function TableSearch(props: {
   data: any[];
   column: any[];
+  rowsPerPage: number[];
 }) {
   const [databody, setdataBody] = useState(props.data);
-  const [limit, setLimit] = useState(rowPerPage[0]);
+  const [limit, setLimit] = useState(props.rowsPerPage[0]);
 
   const handleSearch = (e: any) => {
     const i = props.column.length;
@@ -47,7 +46,7 @@ export default function TableSearch(props: {
             />
             <div style={{ display: "flex", alignItems: "center" }}>
               <select
-              onChange={(e : any) => setLimit(e.target.value)}
+                onChange={(e: any) => setLimit(e.target.value)}
                 style={{
                   border: "none",
                   marginLeft: "10px",
@@ -57,7 +56,7 @@ export default function TableSearch(props: {
                 name="cars"
                 id="cars"
               >
-                {rowPerPage.map((item, index) => {
+                {props.rowsPerPage.map((item, index) => {
                   return (
                     <option key={index} value={item}>
                       {item}
@@ -86,7 +85,11 @@ export default function TableSearch(props: {
       <div className={styles.tableWrapper}>
         {props.data.length > 0 ? (
           <>
-            <AllTable rowPerPage={limit} data={databody} header={props.column} />
+            <AllTable
+              rowPerPage={limit}
+              data={databody}
+              header={props.column}
+            />
           </>
         ) : (
           <div
