@@ -109,7 +109,7 @@ export default function AllTable(props: {
             justifyContent: "center",
           }}
         >
-          <Text child={`${100} - ${200} dari ${5000} data`} />
+          <Text child={`${slice.length} dari ${props.data.length} data`} />
         </div>
         <div>
           <Pagination

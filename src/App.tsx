@@ -1,5 +1,5 @@
 import "./App.css";
-import { Button, Text } from "./lib/components/atoms";
+import { Button } from "./lib/components/atoms";
 import { TableSearch } from "./lib/template";
 
 const column = [
