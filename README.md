@@ -14,7 +14,7 @@ Semua Yang berkaitan pada code table (pagination, component, hooks, dll) ada pad
 | column | Array of Object | [] | Kumpulan header atau judul dalam table, setiap object harus memiliki title & dataIndex (contoh lebih jelas di bawah) |
 | column | Array of Object | [] | isi dari data berdasarkan dataIndex dalam table (contoh lebih jelas di bawah) |
 
-## Contoh
+## Contoh Code
 
 ```
 import { Button } from "./lib/components/atoms";
@@ -102,4 +102,6 @@ function App() {
 
 ```
 
-Dan Hasilnya akan seperti ini 
+## Demo Table
+
+Dan Hasilnya akan seperti ini [Demo](https://react-simple-table.netlify.app/)
