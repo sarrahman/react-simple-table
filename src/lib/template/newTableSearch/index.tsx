@@ -8,8 +8,9 @@ export default function TableSearch(props: {
   column: any[];
   rowsPerPage: number[];
 }) {
+  const rowsPerPage = props.rowsPerPage || [5, 10, 25, 50, 100];
   const [databody, setdataBody] = useState(props.data);
-  const [limit, setLimit] = useState(props.rowsPerPage[0]);
+  const [limit, setLimit] = useState(rowsPerPage[0]);
 
   const handleSearch = (e: any) => {
     const i = props.column.length;
